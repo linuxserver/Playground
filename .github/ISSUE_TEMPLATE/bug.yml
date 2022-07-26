@@ -1,0 +1,86 @@
+name: Bug
+description: File a bug
+title: "[BUG] <title>"
+labels: [Bug, Needs Triage]
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Current Behavior
+      description: Tell us what happens instead of the expected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: Tell us what should happen.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. In this environment...
+        2. With this config...
+        3. Run '...'
+        4. See error...
+      render: Markdown
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: |
+        examples:
+          - **OS**: Ubuntu 20.04
+          - **How docker service was installed**: distro's packagemanager
+          - **Docker version**: 20.10.17
+      value: |
+        - OS:
+        - How docker service was installed:
+        - **Docker version**:
+      render: Markdown
+    validations:
+      required: false
+
+  - type: dropdown
+    attributes:
+      label: CPU architecture
+      options:
+        - x86-64
+        - arm64
+        - armhf
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Docker creation
+      description: |
+        Command used to create docker container
+        Provide your docker create/run command or compose yaml snippet, or a screenshot of settings if using a gui to create the container
+      render: YAML
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      description: |
+        Provide a full docker log, output of "docker logs jellyfin"
+      label: Docker logs
+      placeholder: |
+        Output of `docker logs jellyfin`
+      render: Text
+    validations:
+      required: true
